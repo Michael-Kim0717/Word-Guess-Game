@@ -1,6 +1,7 @@
 /* Title Header */
 
 h1 {
+    color: lightgray;
     padding: 30px 0px;
     text-align: center;
 }
@@ -8,8 +9,14 @@ h1 {
 /* Body */
 
 body {
-    background: url('/Word-Guess-Game/assets/images/background.jpg');
-    background-size: 100%;
+    background: url('/assets/images/background.jpg');
+    background-size: cover;
+}
+
+h2 {
+    padding: 30px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 h3 {
@@ -24,15 +31,11 @@ h4 {
 }
 
 .container {
-    background-color: #F8F9F9;
+    background-color: rgba(187, 182, 182, 0.288);
     border: 2px solid#D7DBDD;
     border-radius: 5px;
     margin-bottom: 30px;
     padding: 10px;
-}
-
-.main-screen {
-    width: 66.667%;
 }
 
 /* Footer */
