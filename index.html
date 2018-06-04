@@ -24,37 +24,50 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-9" id="main-screen">
+                <div class="col-sm-12 col-md-8 col-lg-9" id="main-screen">
                     <h2 id="start-text"> Press any button to begin... </h2>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <img src="./assets/images/fireworks.gif" class="onWin">
-                            <audio> 
-                                <source src="./assets/images/fireworks.wav" type="audio/wav" id="win">
-                                <source src="./assets/images/sad.wav" type="audio/wav" id="lose">
-                            </audio>
                         </div>
-                        <div class="col-8">
+                        <div class="col-6">
                             <h3 id="finish-text"> </h3>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <img src="./assets/images/fireworks.gif" class="onWin">
                         </div>
                     </div>
                     <img src="#" id="country-pic">
                 </div>
-                <div class="col-3" id="score-screen">
+                <div class="row" id="small-score-screen">
+                    <div class="col-sm-4">
+                        <h4> Guessed Correctly : </h4>
+                        <hr>
+                        <h3 class="numWins"> 0 </h3>
+                    </div>
+                    <div class="col-sm-4">
+                        <h4> Attempts Left : </h4>
+                        <hr>
+                        <h3 class="numGuesses"> 5 </h3> 
+                    </div>
+                    <div class="col-sm-4">
+                        <h4> Letters Guessed : </h4>
+                        <hr>
+                        <h3 class="guessedArray">  </h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" id="medium-score-screen">
                     <h4> Guessed Correctly : </h4>
                     <hr>
-                    <h3 id="numWins"> 0 </h3>
+                    <h3 class="numWins"> 0 </h3>
 
                     <h4> Attempts Left : </h4>
                     <hr>
-                    <h3 id="numGuesses"> 5 </h3> 
+                    <h3 class="numGuesses"> 5 </h3> 
 
                     <h4> Letters Guessed : </h4>
                     <hr>
-                    <h3 id="guessedArray">  </h3>
+                    <h3 class="guessedArray">  </h3>
                 </div>
             </div>
         </div>

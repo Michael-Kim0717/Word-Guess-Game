@@ -70,6 +70,7 @@ document.onkeydown = function () {
             }
         }
         document.getElementById("start-text").innerText = guessingWord.join("");
+        document.getElementById("start-text").style.fontSize = "2.5em";
 
         // Reset the finishing text, country picture, and values if applicable.
         document.getElementById("finish-text").innerText = "";
@@ -79,9 +80,11 @@ document.onkeydown = function () {
         document.getElementsByClassName('onWin')[1].style.visibility = 'hidden';
         
         numberOfGuesses = 5;
-        document.getElementById("numGuesses").innerText = numberOfGuesses;
+        document.getElementsByClassName('numGuesses')[0].innerText = numberOfGuesses;
+        document.getElementsByClassName('numGuesses')[1].innerText = numberOfGuesses;
         lettersGuessed = [];
-        document.getElementById("guessedArray").innerText = " ";
+        document.getElementsByClassName('guessedArray')[0].innerText = " ";
+        document.getElementsByClassName('guessedArray')[1].innerText = " ";
     }
     // If the game has already started, perform an action depending on if a LETTER is pressed.
     else if (isLetter(keyPress)) {
@@ -100,7 +103,8 @@ document.onkeydown = function () {
 
             // Enter in the guessed letter into the array.
             lettersGuessed.push(keyPress.toUpperCase());
-            document.getElementById("guessedArray").innerText = lettersGuessed;
+            document.getElementsByClassName('guessedArray')[0].innerText = lettersGuessed;
+            document.getElementsByClassName('guessedArray')[1].innerText = lettersGuessed;
             
             // If the word has been fully completed, restart.
             if (isFinished(guessingWord)){
@@ -114,9 +118,12 @@ document.onkeydown = function () {
                 document.getElementsByClassName('onWin')[0].style.visibility = 'visible';
                 document.getElementsByClassName('onWin')[1].style.visibility = 'visible';
 
+                document.getElementById("start-text").style.fontSize = "1.25em";
+
                 // Add a win to the win counter.
                 winCounter += 1;
-                document.getElementById("numWins").innerText = winCounter;
+                document.getElementsByClassName('numWins')[0].innerText = winCounter;
+                document.getElementsByClassName('numWins')[1].innerText = winCounter;
             }
         }
         // If letter doesn't match a letter within the word AND,
@@ -124,9 +131,12 @@ document.onkeydown = function () {
         // Subtract a guess attempt and update variables accordingly.
         else if (!containsLetter(startingWord, keyPress) && !lettersGuessed.includes(keyPress.toUpperCase())){
             lettersGuessed.push(keyPress.toUpperCase());
-            document.getElementById("guessedArray").innerText = lettersGuessed;
+            document.getElementsByClassName('guessedArray')[0].innerText = lettersGuessed;
+            document.getElementsByClassName('guessedArray')[1].innerText = lettersGuessed;
+
             numberOfGuesses = numberOfGuesses - 1;
-            document.getElementById("numGuesses").innerText = numberOfGuesses;
+            document.getElementsByClassName('numGuesses')[0].innerText = numberOfGuesses;
+            document.getElementsByClassName('numGuesses')[1].innerText = numberOfGuesses;
         }
         // If the numberOfGuesses reaches 0,
         // Create a new blank word for the user to guess, and reset the variables.
@@ -143,10 +153,13 @@ document.onkeydown = function () {
             document.getElementsByClassName('onWin')[0].style.visibility = 'visible';
             document.getElementsByClassName('onWin')[1].style.visibility = 'visible';
 
+            document.getElementById("start-text").style.fontSize = "1.25em";
+
             // Reset win counter.
             // Add a win to the win counter.
             winCounter = 0;
-            document.getElementById("numWins").innerText = winCounter;
+            document.getElementsByClassName('numWins')[0].innerText = winCounter;
+            document.getElementsByClassName('numWins')[1].innerText = winCounter;
         }
     }
 }
