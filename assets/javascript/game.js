@@ -7,7 +7,7 @@ var countries = ["Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "A
                  "Dominican Republic", "Denmark",
                  "Ethiopia",
                  "Finland", "France",
-                 "Germany", "Great Britain", "Greece", "Guatemala", "Guinea",
+                 "Germany", "Greece", "Guatemala", "Guinea",
                  "Honduras", "Hungary",
                  "Iceland", "Indonesia", "Israel",
                  "Jamaica",
@@ -22,7 +22,6 @@ var countries = ["Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "A
                  "Uganda", "Ukraine", "Uruguay", "Uzbekistan",
                  "Venezuela", "Vietnam",
                  "Zimbabwe"];
-var countryMaps = [];
 
 // Contains the initial 5 guesses.
 var numberOfGuesses = 5;
@@ -40,6 +39,14 @@ var startingWord = "hello";
 var guessingWord = [];
 
 /* Functions */
+
+// Happens whenever the page loads.
+function onLoad(){ 
+    document.getElementById("country-pic").hidden = true;
+    document.getElementsByClassName('onWin')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('onWin')[1].style.visibility = 'hidden';
+}
+window.onload = onLoad;
 
 // Whenever any key is pressed, call this function.
 document.onkeydown = function () {
@@ -64,8 +71,12 @@ document.onkeydown = function () {
         }
         document.getElementById("start-text").innerText = guessingWord.join("");
 
-        // Reset the finishing text and values if applicable.
+        // Reset the finishing text, country picture, and values if applicable.
         document.getElementById("finish-text").innerText = "";
+        document.getElementById("country-pic").hidden = true;
+        
+        document.getElementsByClassName('onWin')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('onWin')[1].style.visibility = 'hidden';
         
         numberOfGuesses = 5;
         document.getElementById("numGuesses").innerText = numberOfGuesses;
@@ -95,7 +106,13 @@ document.onkeydown = function () {
             if (isFinished(guessingWord)){
                 // Show a message after the user has won the round.
                 document.getElementById("start-text").innerText = "Press any button to continue...";
-                document.getElementById("finish-text").innerText = "YOU WIN! Your word was " + startingWord.toUpperCase() + "!";
+                document.getElementById("finish-text").innerText = "YOU WIN! Your country was " + startingWord.toUpperCase() + "!";
+                
+                document.getElementById("country-pic").hidden = false;
+                document.getElementById("country-pic").src = "./assets/images/" + startingWord.toLowerCase() + ".jpg";
+                
+                document.getElementsByClassName('onWin')[0].style.visibility = 'visible';
+                document.getElementsByClassName('onWin')[1].style.visibility = 'visible';
 
                 // Add a win to the win counter.
                 winCounter += 1;
@@ -114,26 +131,17 @@ document.onkeydown = function () {
         // If the numberOfGuesses reaches 0,
         // Create a new blank word for the user to guess, and reset the variables.
         if (numberOfGuesses == 0){
-            // Generate a new blank word from the array.
-            startingWord = countries[Math.floor(Math.random() * countries.length)];
-            console.log(startingWord);
-            guessingWord = [];
-            for (var i = 0; i < startingWord.length; i++){
-                if (startingWord[i] == ' '){
-                    console.log("SPACE");
-                    guessingWord.push("\n");
-                }
-                else {
-                    guessingWord.push("_ ");
-                }
-            }
-            document.getElementById("start-text").innerText = guessingWord.join("");
-
-            // Reset the numberOfGuesses and the guessedArray.
-            numberOfGuesses = 5;
-            document.getElementById("numGuesses").innerText = numberOfGuesses;
-            lettersGuessed = [];
-            document.getElementById("guessedArray").innerText = " ";
+            // Show a message after the user has won the round.
+            document.getElementById("start-text").innerText = "Press any button to continue...";
+            document.getElementById("finish-text").innerText = "You lost... Your country was " + startingWord.toUpperCase() + "!";
+            
+            document.getElementById("country-pic").hidden = false;
+            document.getElementById("country-pic").src = "./assets/images/" + startingWord.toLowerCase() + ".jpg";
+            
+            document.getElementsByClassName('onWin')[0].src = "./assets/images/sad.gif";
+            document.getElementsByClassName('onWin')[1].src = "./assets/images/sad.gif";
+            document.getElementsByClassName('onWin')[0].style.visibility = 'visible';
+            document.getElementsByClassName('onWin')[1].style.visibility = 'visible';
 
             // Reset win counter.
             // Add a win to the win counter.
