@@ -115,6 +115,8 @@ document.onkeydown = function () {
                 document.getElementById("country-pic").hidden = false;
                 document.getElementById("country-pic").src = "./assets/images/" + startingWord.toLowerCase() + ".jpg";
                 
+                document.getElementsByClassName('onWin')[0].src = "./assets/images/fireworks.gif";
+                document.getElementsByClassName('onWin')[1].src = "./assets/images/fireworks.gif";
                 document.getElementsByClassName('onWin')[0].style.visibility = 'visible';
                 document.getElementsByClassName('onWin')[1].style.visibility = 'visible';
 
